@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+  box-sizing: border-box;
+}
+ 
+#app {
+  width: 100vw;
+  height: 100vh;
+}
+ 
+.wrapper {
+  flex-grow: 1;
+  height: 100%;
+}
+
+.react-flow__pane {
+  cursor: default !important;  /* Change to a more visible cursor */
+}
