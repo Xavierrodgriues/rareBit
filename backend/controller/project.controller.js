@@ -42,7 +42,40 @@ export const createProject = async (req,res) => {
 
 export const chatProject = async (req,res) => {
     try {
-        const {projectId, question, nodeId} = req.body;
+       
+        // const {projectId, question, nodeId, connectionId} = req.body;
+
+        // let response = await generateChat([{role : 'user', content : question}])
+        
+        // const chat = await Chat.create({
+        //     projectId,
+        //     question,
+        //     answer : response,
+        //     position : {x : 0, y : 0},
+        //     connectionId : connectionId
+        // })
+
+        // return res.status(200).json({
+
+    } catch (error) {
+        return res.status(500).json({
+            success : false,
+            message : "Internal Server Error",
+            error : error.message
+        })
+    }
+}
+
+export const getFullChat = async (req,res) => {
+    try {
+        const {projectId} = req.params;
+        const chat = await Chat.find({projectId}).sort({createdAt : -1})
+
+        return res.status(200).json({
+            success : true,
+            message : "Chat fetched successfully",
+            chat
+        })
     } catch (error) {
         return res.status(500).json({
             success : false,
