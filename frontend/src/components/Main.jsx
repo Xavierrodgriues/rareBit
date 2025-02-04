@@ -6,7 +6,7 @@ const Main = () => {
 
   return (
     <div className="flex h-screen bg-gray-100">
-      {/* Left Sliding Panel */}
+
       <div
         className={`fixed top-0 left-0 h-full bg-white shadow-lg w-64 transform ${
           isOpen ? "translate-x-0" : "-translate-x-full"
@@ -32,7 +32,7 @@ const Main = () => {
         </button>
       </div>
 
-      {/* Right Chat Section (Placeholder) */}
+
       <div className="flex-1 p-4">Right Chat Section</div>
     </div>
   );
