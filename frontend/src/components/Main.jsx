@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 
 const Main = () => {
@@ -13,11 +12,11 @@ const Main = () => {
           isOpen ? "translate-x-0" : "-translate-x-full"
         } transition-transform duration-300 ease-in-out`}
       >
-        <div className="p-4 flex justify-between items-center border-b"> 
+        <div className="p-4 flex justify-between items-center border-b">
           <h2 className="text-lg font-semibold">Options</h2>
-          <Button variant="ghost" onClick={() => setIsOpen(false)}>
+          <button className="p-2" onClick={() => setIsOpen(false)}>
             <X className="h-5 w-5" />
-          </Button>
+          </button>
         </div>
         <ul className="p-4 space-y-2">
           <li className="p-2 hover:bg-gray-200 rounded cursor-pointer">Option 1</li>
@@ -28,9 +27,9 @@ const Main = () => {
 
       {/* Open Button */}
       <div className="p-4">
-        <Button onClick={() => setIsOpen(true)}>
-          <Menu className="h-5 w-5 mr-2" /> Open Panel
-        </Button>
+        <button className="p-2 bg-blue-500 text-white rounded" onClick={() => setIsOpen(true)}>
+          <Menu className="h-5 w-5 mr-2 inline" /> Open Panel
+        </button>
       </div>
 
       {/* Right Chat Section (Placeholder) */}
