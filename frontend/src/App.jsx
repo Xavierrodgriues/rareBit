@@ -1,8 +1,13 @@
 import React from 'react'
+import Main from './components/Main'
 
 const App = () => {
   return (
-    <div className='bg-red-500'>App</div>
+    <>
+      {/* <Main /> */}
+
+      <h1 className='bg-red-500'>sdsd</h1>
+    </>
   )
 }
 
