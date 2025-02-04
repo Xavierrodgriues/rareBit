@@ -4,9 +4,9 @@ import Main from './components/Main'
 const App = () => {
   return (
     <>
-      {/* <Main /> */}
+      <Main />
 
-      <h1 className='bg-red-500'>sdsd</h1>
+      {/* <h1 className='bg-red-500'>sdsd</h1> */}
     </>
   )
 }
