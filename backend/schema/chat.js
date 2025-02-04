@@ -1,9 +1,9 @@
-import mongoose, { Mongoose } from "mongoose";
+import mongoose from "mongoose";
 
 
 const chatSchema = new mongoose.Schema({
     projectId : {
-        type : Mongoose.Schema.type.ObectId,
+        type : mongoose.Schema.type.ObjectId,
         ref : "Project",
     },
     question : {

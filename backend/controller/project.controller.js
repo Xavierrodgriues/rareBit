@@ -1,6 +1,6 @@
-import { Project } from "../schema/project";
-import { Chat } from "../schema/chat";
-import { generateChat } from "../utils/model_ollama";
+import { Project } from "../schema/project.js";
+import { Chat } from "../schema/chat.js";
+import { generateChat } from "../utils/model_ollama.js";
 
 export const createProject = async (req,res) => {
     try {
