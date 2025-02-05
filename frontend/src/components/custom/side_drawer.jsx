@@ -12,24 +12,27 @@ import {
   DrawerTrigger,
 } from "../ui/drawer"
 import { LuMoveRight } from "react-icons/lu";
-
+import { FaListUl } from "react-icons/fa";
+import { LuRabbit } from "react-icons/lu";
+import Tab from "./Tab";
 const Sidebar_drawer = ({open,onOpen}) => {
   return (
     <DrawerRoot placement="start" >  
       <DrawerBackdrop />
       <DrawerTrigger asChild>
         <Button position="absolute" zIndex={1000} top={2} left={2} variant="outline">
-            <LuMoveRight />
+            <FaListUl />
         </Button>
       </DrawerTrigger>
       <DrawerContent>
         <DrawerHeader>
-          <DrawerTitle>RareBit</DrawerTitle>
+          <DrawerTitle className="draw-title">RareBit <LuRabbit /></DrawerTitle>
+          
         </DrawerHeader>
-        <DrawerBody>
-          <p>
-            Projects
-          </p>
+        <DrawerBody className="drawer-body">
+          <Tab />
+          <Tab />
+          <Tab />
         </DrawerBody>
         <DrawerFooter>
           <DrawerActionTrigger asChild>
