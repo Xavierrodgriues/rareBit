@@ -1,0 +1,62 @@
+*{
+    color: white;
+}
+
+.tab {
+    border: 1px solid rgb(156, 153, 153);
+    padding: 0.8rem;
+    border-radius: 10px;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out; /* specify transitions for both background-color and color */
+}
+
+.tab:hover {
+    background-color: rgb(220, 220, 220);
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+}
+
+
+.draw-title{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: xx-large;
+}
+
+
+.drawer-body{
+    background: #000;
+}
+
+.tab{
+    margin-top: 1rem;
+    background: #282727;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+button{
+    background-color: #282727;
+}
+
+.title{
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    line-height: 3rem;
+}
+
+.buttons-exp{
+    display: flex;
+    gap: 8px;
+}
+
+.inp-btn:hover{
+    background-color: white;
+}
+
+@media (max-width: 768px) {
+    .title{
+        font-size: 2rem;
+    }
+}
+
