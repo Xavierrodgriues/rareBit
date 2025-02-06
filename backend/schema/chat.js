@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 
 const chatSchema = new mongoose.Schema({
     projectId : {
-        type : mongoose.Schema.type.ObjectId,
+        type : mongoose.Schema.Types.ObjectId,
         ref : "Project",
     },
     question : {
@@ -20,7 +20,8 @@ const chatSchema = new mongoose.Schema({
             y : Number,
         },
     },
-    connectionId : [mongoose.Schema.type.ObectId],
+    connectionId : [mongoose.Schema.Types.ObjectId],
+    nodeId : String
 },{timestamps : true})
 
 export const Chat = mongoose.model("Chat", chatSchema)

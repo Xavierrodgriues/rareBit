@@ -1,11 +1,10 @@
 import ollama from 'ollama'
-
-
 export const generateChat = async (messages) => {
     try {
-        const response = await ollama.chat({ model: 'llama3.1', messages: [messages], stream: false })
+        const response = await ollama.chat({ model: 'mistral:latest', messages: messages, stream: false })
+        console.log(response,'response')
         return response.message.content
     } catch (error) {
-        return 
+        console.log(error,'ollama error')
     }
 }

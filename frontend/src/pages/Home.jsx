@@ -1,19 +1,30 @@
-import { Button, Container, Textarea } from "@chakra-ui/react";
+import { Button, Container, Spinner, Textarea } from "@chakra-ui/react";
 import { useState, useRef } from "react";
 import Sidebar_drawer from "../components/custom/side_drawer";
 import { FaFileUpload } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { BsGlobe } from "react-icons/bs";
 import { IoIosSend } from "react-icons/io";
+import axios from "axios";
+import { BACKEND_URL } from "../../constants/backend";
 
 const Home = () => {
   const [open, setOpen] = useState(true);
   const router = useNavigate();
   const fileInputRef = useRef(null);
+  const [prompt, setPrompt] = useState("");
+  const [loading,setLoading] = useState(false)
+  async function handleSubmitMove(e) {
 
-  function handleSubmitMove(e) {
-    if (e.key === "Enter") {
-      setOpen(!open);
+    if (e.key === "Enter" && !e.shiftKey) {
+      let res = prompt.trim()
+      try {
+        const response = await axios.post(`${BACKEND_URL}/api/v1/create_project`, {title : res})
+        console.log({response})
+        router(`/projects?projectId=${response.data.result._id}`,{state : {prompt : res}})
+      } catch (error) {
+        console.log(error)
+      }
     }
   }
 
@@ -21,7 +32,6 @@ const Home = () => {
     const file = event.target.files[0];
     if (file) {
       console.log("Uploaded file:", file.name);
-      // You can handle file upload logic here
     }
   };
 
@@ -34,21 +44,21 @@ const Home = () => {
         </center>
 
         <Container height="30vh" width="80vh" borderRadius="2xl" backgroundColor="gray.900" padding={2} display="flex" flexDirection="column" justifyContent="space-between" alignItems="self-start">
-          <Textarea border="none" background="transparent" outline="none" width="full" placeholder="Enter your prompt here" />
+          <Textarea disabled={loading} value={prompt}  onChange={(e) => setPrompt(e.target.value)} border="none" background="transparent" outline="none" width="full" placeholder="Enter your prompt here" />
 
           <div className="buttons-exp">
             {/* Upload Button with Hidden File Input */}
-            <Button background="transparent" border="1px solid" borderColor="gray.600" color="white" rounded="full" padding={2} onClick={() => fileInputRef.current.click()}>
+            <Button disabled={loading} background="transparent" border="1px solid" borderColor="gray.600" color="white" rounded="full" padding={2} onClick={() => fileInputRef.current.click()}>
               <FaFileUpload color="white" size="20px" />
             </Button>
             <input type="file" ref={fileInputRef} style={{ display: "none" }} onChange={handleFileChange} accept=".pdf,.doc,.docx" />
 
-            <Button className="inp-btn" background="transparent" border="1px solid" borderColor="gray.600" color="white" rounded="full" padding={2}>
+            <Button disabled={loading} className="inp-btn" background="transparent" border="1px solid" borderColor="gray.600" color="white" rounded="full" padding={2}>
               <BsGlobe />
             </Button>
 
-            <Button className="inp-btn" background="transparent" border="1px solid" borderColor="gray.600" color="white" rounded="full" padding={2}>
-              <IoIosSend />
+            <Button disabled={loading} onClick={handleSubmitMove} className="inp-btn" background="transparent" border="1px solid" borderColor="gray.600" color="white" rounded="full" padding={2}>
+              {loading ? <Spinner /> : <IoIosSend />}
             </Button>
           </div>
         </Container>

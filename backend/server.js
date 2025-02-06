@@ -1,12 +1,17 @@
 import express from "express";
 const app = express();
+import dotenv from "dotenv";
+dotenv.config()
+import cors from "cors";
 import { WebSocketServer } from "ws";
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(cors())
 import projectRouter from "./route/project.routes.js"
+import { db } from "./db/db.config.js";
 
 app.use('/api/v1', projectRouter)
+db()
 
 const wss = new WebSocketServer({ noServer: true })
 
